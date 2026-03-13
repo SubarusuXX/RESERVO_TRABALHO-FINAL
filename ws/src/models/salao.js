@@ -26,7 +26,7 @@ endereco:{
 },
 geo:{
     tipo:String,
-    coordinates: Array,
+    coordinates: [Number],
 },
 dataCadastro: {
     type: Date,

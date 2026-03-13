@@ -11,7 +11,9 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
+    "@turf/turf": "^7.3.4",
     "aws-sdk": "^2.1693.0",
+    "axios": "^1.13.6",
     "busboy": "^1.6.0",
     "busboy-body-parser": "^0.3.2",
     "connect-busboy": "^1.0.0",
