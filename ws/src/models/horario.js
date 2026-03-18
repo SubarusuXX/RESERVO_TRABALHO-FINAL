@@ -7,7 +7,7 @@ const horario = new Schema({
     ref: 'Salao',
     required: true,
  },
- especialidaddes: [
+ especialidades: [
     {
     type: mongoose.Types.ObjectId,
     ref: 'Servico',

@@ -2,46 +2,75 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const agendamento = new Schema({
-   salaoId:{
-    type: mongoose.Types.ObjectId,
+
+  salaoId: {
+    type: Schema.Types.ObjectId,
     ref: 'Salao',
     required: true,
- },
-    clienteId:{
-    type: mongoose.Types.ObjectId,
+  },
+
+  clienteId: {
+    type: Schema.Types.ObjectId,
     ref: 'Cliente',
     required: true,
- },
-    servicoId:{
-    type: mongoose.Types.ObjectId,
+  },
+
+  servicoId: {
+    type: Schema.Types.ObjectId,
     ref: 'Servico',
     required: true,
- },
-    colaboradorId:{
-    type: mongoose.Types.ObjectId,
+  },
+
+  colaboradorId: {
+    type: Schema.Types.ObjectId,
     ref: 'Colaborador',
     required: true,
- },
-    data: {
+  },
+
+  data: {
     type: Date,
     required: true,
- },
-    comissao: {
+  },
+
+  valor: {
     type: Number,
     required: true,
- },
-    valor: {
+  },
+
+  comissao: {
     type: Number,
     required: true,
- },
-    transactionId: {
+  },
+
+pagamento: {
+  type: {
+    metodo: {
+      type: String,
+      enum: ['LOCAL','PIX','DINHEIRO','CARTAO'],
+      default: 'LOCAL'
+    },
+    status: {
+      type: String,
+      enum: ['PENDENTE','PAGO'],
+      default: 'PENDENTE'
+    }
+  },
+  default: {
+    metodo: 'LOCAL',
+    status: 'PENDENTE'
+  }
+},
+  status: {
     type: String,
-    required: true,
- },
-    dataCadastro: {
+    enum: ['A','C'], // A = ativo / C = cancelado
+    default: 'A'
+  },
+
+  dataCadastro: {
     type: Date,
     default: Date.now,
- }
+  }
+
 });
 
 module.exports = mongoose.model('Agendamento', agendamento);
